@@ -1,0 +1,22 @@
+@model bright_ideas.Models.PostViewModel
+
+<h1>Hi @ViewBag.User.alias!</h1>
+<a id="logout" href="/logout">Logout</a>
+<hr>
+<form id="post" asp-action="AddPost" method="post">
+    <textarea asp-for="content" cols="30" placeholder="Post Something Witty Here..."></textarea>
+    <button type="submit">Add Idea!</button>
+</form>
+<hr>
+@foreach(var idea in ViewBag.Ideas)
+        {
+            <a id="showUser" asp-action="showUser" asp-route-id="@idea.userId">@idea.User.alias</a>
+            <p>@idea.content</p>
+            <a id="like" asp-action="updateLikes" asp-route-id="@idea.postId">Like</a>
+            <p><a id="showIdea" asp-action="showIdea" asp-route-id="@idea.postId">@idea.likecount</a> like this</p>
+            @if(idea.userId == ViewBag.User.userId)
+                {
+                    <a id="del" asp-action="delete" asp-route-id="@idea.postId" onclick=deleteConfirm()>Delete</a>
+                }
+            <hr>
+        }

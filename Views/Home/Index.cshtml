@@ -1,0 +1,33 @@
+@model bright_ideas.Models.UserViewModel
+
+<form id="register" asp-action="Register" method="post">
+    <h2>Registration</h2>
+    <label>Name:</label>
+    <input asp-for="name">
+    <label>Alias:</label>
+    <input asp-for="alias">
+    <label>Email:</label>
+    <input asp-for="email">
+    <label>Password:</label>
+    <input asp-for="password">
+    <p>Passwords must be at least 8 characters</p>
+    <label>Confirm PW:</label>
+    <input asp-for="confirm">
+    <button type="submit">Register</button>
+</form>
+<form id="login" action="/login" method="post">
+    <h2>Login</h2>
+    <label>Email:</label>
+    <input type="email" name="email">
+    <label>Password:</label>
+    <input type="password" name="pw">
+    <button type="submit">Login</button>
+</form>
+<span class="errors fname" asp-validation-for="name"></span>
+<span class="errors lname" asp-validation-for="alias"></span>
+<span class="errors username" asp-validation-for="email"></span>
+<span class="errors pw" asp-validation-for="password"></span>
+<span class="errors confirm" asp-validation-for="confirm"></span>
+<span class="errors register">@ViewBag.RegUserErr</span>
+<span class="errors login_user">@ViewBag.LogUserErr</span>
+<span class="errors login_pw">@ViewBag.LogPwErr</span>

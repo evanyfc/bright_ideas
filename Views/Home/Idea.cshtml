@@ -1,0 +1,27 @@
+<a id="home" href="/main">Home</a>
+<a id="logout" href="/logout">Logout</a>
+
+<hr>
+
+<p>@ViewBag.author.alias</p>
+<p>@ViewBag.post.content</p>
+<br>
+
+<h4>People who liked this post:</h4>
+<table id="likes">
+    <thead>
+        <tr>
+            <th>Alias</th>
+            <th>Name</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var user in ViewBag.Likes)
+        {
+            <tr>
+                <td>@user.User.alias</td>
+                <td>@user.User.name</td>
+            </tr>
+        }
+    </tbody>
+</table>
